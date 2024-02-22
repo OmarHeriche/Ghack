@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const userScheema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, "enter the name"],
+    minlength: 3,
+  },
   link: {
     type: String,
     required: [true, "enter the link of you website"],
@@ -25,6 +30,14 @@ const userScheema = new mongoose.Schema({
     type: String,
     required: [true, "enter the password"],
     minlength: 6,
+  },
+  bio:{
+    type:String,
+    minlength: 3,
+  },
+  rating:{
+    type:Number,
+    default:0
   },
   //! add the refreshToken
   refreshToken: {
