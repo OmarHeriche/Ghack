@@ -33,7 +33,7 @@ const register = async (req, res) => {
   });
   //!don't send access token to the client side
   res.status(StatusCodes.OK).json({
-    user: { name: user.name },
+    user: user,
     msg: "user created successfully"
   });
                                     //? end
@@ -74,7 +74,7 @@ const login = async (req, res) => {
   });
   //!don't send access token to the client side
   res.status(StatusCodes.OK).json({
-    user: { name: user.name },
+    user: user,
     msg: "user logged in successfully"
   });
 };
