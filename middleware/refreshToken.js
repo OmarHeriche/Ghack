@@ -27,11 +27,11 @@ const refreshToken = async (req, res, next) => {
   const payload = jwt.verify(refreshToken, process.env.RefreshTokenSecret);
   req.user = {
     userId: payload.userId,
-    name: payload.name,
+    link: payload.link,
   };
   //!create the access token
   const accessToken = jwt.sign(
-    { name: payload.name, userId: payload.userId },
+    { link: payload.link, userId: payload.userId },
     process.env.AccessTokeSecret,
     {
       expiresIn: "10s",

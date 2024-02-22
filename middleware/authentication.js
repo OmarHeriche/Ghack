@@ -12,7 +12,7 @@ const auth = async (req, res, next) => {
     const payload = jwt.verify(accessToken, process.env.AccessTokeSecret);
     req.user = {
       userId: payload.userId,
-      name: payload.name,
+      link: payload.link,
     }; //todo hna jbna l userI and the name from the payload :o
     next();
   } catch (error) {//! let's put some work here to avoid throwing the error when the there is a new access token

@@ -9,7 +9,6 @@ const connectDB = require("./db/connect");
 require("express-async-errors");
 const authenticationRouter = require("./routes/auth");
 const usersRouter = require("./routes/users");
-// const jobsRouter = require("./routes/jobs");
 const auth = require("./middleware/authentication");
 
 const cors=require('cors');
@@ -40,8 +39,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", authenticationRouter);
 app.use("/api/v1/users", usersRouter);
-app.use(refreshToken);
-app.use(auth);
+// app.use(refreshToken);
+// app.use(auth);
 app.use("/api/v1/users", usersRouter);
 
 //! middlewares : end

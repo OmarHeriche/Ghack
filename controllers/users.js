@@ -7,8 +7,9 @@ const getAllUsers = async (req, res) => {
   res.status(StatusCodes.OK).json({ user, count: user.length });
 };
 const updateUser = async (req, res) => {
+  console.log(req.user);
   const user = await User.findOneAndUpdate(
-    { email: req.body.email},
+    { _id:req.user.userId},
     req.body,
     { new: true, runValidators: true }
   );
