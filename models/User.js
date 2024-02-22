@@ -42,7 +42,7 @@ userScheema.pre("save", function (next) {
 
 userScheema.methods.createAccessToken = function () {
   return jwt.sign(
-    { name: this.link, userId: this._id },
+    { link: this.link, userId: this._id },
     process.env.AccessTokeSecret,
     {
       expiresIn: "10s",
@@ -51,7 +51,7 @@ userScheema.methods.createAccessToken = function () {
 };
 userScheema.methods.createRefreshToken = function () {
   return jwt.sign(
-    { name: this.link, userId: this._id },
+    { link: this.link, userId: this._id },
     process.env.RefreshTokenSecret,
     {
       expiresIn: "1d",

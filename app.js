@@ -39,9 +39,9 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", authenticationRouter);
 app.use("/api/v1/users", usersRouter);
-// app.use(refreshToken);
-// app.use(auth);
-app.use("/api/v1/users", usersRouter);
+app.use(refreshToken);
+app.use(auth);
+app.use("/api/v1/update", usersRouter);
 
 //! middlewares : end
 
