@@ -16,6 +16,11 @@ const xss=require('xss-clean');
 const helmet=require('helmet');
 // const rateLimiter=require('express-rate-limit');
 const refreshToken = require("./middleware/refreshToken");
+//todo start doing the swagger
+const swaggerUi = require("swagger-ui-express");
+const yaml = require("yamljs");
+const swaggerDocument = yaml.load("./swagger.yaml");
+//todo end doing the swagger
 //!importing : end
 
 const app = express();
@@ -34,8 +39,10 @@ app.use(cookieParcer());
 
 //! middlewares : start
 app.get("/", (req, res) => {
-  res.send("hello there");
+  res.send(`<h1>HEY THERE</h1><a href="/api-docs">Go To API DOCS</a>`);
 });
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/api/v1/auth", authenticationRouter);
 app.use("/api/v1/users", usersRouter);

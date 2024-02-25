@@ -1,0 +1,194 @@
+openapi: 3.1.0
+info:
+  title: Ghack
+  contact: {}
+  version: '1.0'
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+servers:
+- url: https://ghack-v4xu.onrender.com/api/v1
+  variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register
+      operationId: Register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterRequest'
+              - examples:
+                - name: omar
+                  link: https://ghack-v4xu.onrender.com
+                  location: dergana
+                  password: password
+                  email: omarHeriche@gmail.com
+              contentMediaType: application/json
+            example:
+              name: omar
+              link: https://ghack-v4xu.onrender.com
+              location: dergana
+              password: password
+              email: omarHeriche@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    parameters: []
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: login
+      operationId: login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/loginrequest'
+              - examples:
+                - password: password
+                  email: omarHeriche@gmail.com
+              contentMediaType: application/json
+            example:
+              password: password
+              email: omarHeriche@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    parameters: []
+  /users:
+    get:
+      tags:
+      - 3ish9i mal El yatim
+      summary: GetAllUsers
+      operationId: GetAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    parameters: []
+  /update:
+    patch:
+      tags:
+      - Users
+      summary: updateUserProfile
+      operationId: updateUserProfile
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateUserProfileRequest'
+              - examples:
+                - password: password
+                  email: omarHeriche@gmail.com
+                  bio: here im writing into my bio
+              contentMediaType: application/json
+            example:
+              password: password
+              email: omarHeriche@gmail.com
+              bio: here im writing into my bio
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    parameters: []
+components:
+  schemas:
+    RegisterRequest:
+      title: RegisterRequest
+      required:
+      - name
+      - link
+      - location
+      - password
+      - email
+      type: object
+      properties:
+        name:
+          type: string
+        link:
+          type: string
+        location:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+      examples:
+      - name: omar
+        link: https://ghack-v4xu.onrender.com
+        location: dergana
+        password: password
+        email: omarHeriche@gmail.com
+    loginrequest:
+      title: loginrequest
+      required:
+      - password
+      - email
+      type: object
+      properties:
+        password:
+          type: string
+        email:
+          type: string
+      examples:
+      - password: password
+        email: omarHeriche@gmail.com
+    updateUserProfileRequest:
+      title: updateUserProfileRequest
+      required:
+      - password
+      - email
+      - bio
+      type: object
+      properties:
+        password:
+          type: string
+        email:
+          type: string
+        bio:
+          type: string
+      examples:
+      - password: password
+        email: omarHeriche@gmail.com
+        bio: here im writing into my bio
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Misc
+  description: ''
+- name: Auth
+  description: ''
+- name: 3ish9i mal El yatim
+  description: ''
+- name: Users
+  description: ''
