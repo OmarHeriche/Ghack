@@ -16,7 +16,6 @@ const auth = async (req, res, next) => {
     }; //todo hna jbna l userI and the name from the payload :o
     next();
   } catch (error) {//! let's put some work here to avoid throwing the error when the there is a new access token
-    console.log("the user is not authenticated yet catch error");//todo remove this line  
     next();
     return;
   }

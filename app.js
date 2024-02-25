@@ -59,7 +59,7 @@ async function start() {
       console.log(`Server Is listening to the ${port} port...`);
     });
   } catch (error) {
-    console.log(error);
+    
   }
 }
 start();
